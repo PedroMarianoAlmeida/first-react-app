@@ -1,32 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
-
-import * as math from './math.js' // combine all exports into a math object
-// ! we can name the combined object however we like, it doesn't have to be math
-//import { sum, numbers } from './math.js' // import separately
-console.log(math.numbers.reduce(math.sum));
-
-function App() {
+const Home = () => {
+  return <h2>Home</h2>;
+}
+const About = () => {
+  return <h2>About</h2>;
+}
+const Contact = () => {
+  return <h2>Contact</h2>;
+}
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container">
+        <h2>React Rotuer Demo</h2>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about/">About</Link>
+            </li>
+            <li>
+              <Link to="/contact/">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+        <Route path="/" exact component={Home} />
+        <Route path="/about/" component={About} />
+        <Route path="/contact/" component={Contact} />
+      </div>
+    </Router>
   );
 }
-
 export default App;
