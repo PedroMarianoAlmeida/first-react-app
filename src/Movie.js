@@ -3,6 +3,11 @@ class Movie extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount () {
+    console.log(this.props.match);
+  }
+  
   render() {
     return (
       <div className="container">
